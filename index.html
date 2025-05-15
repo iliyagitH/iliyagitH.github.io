@@ -3,66 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме разработчика игр</title>
+    <title>Резюме</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <div class="resume-container" id="resume">
         <div class="header">
-            <h1><span class="editable" data-key="name" contenteditable="true">Жариков Илья</span></h1>
-            <p>
-                <span class="editable" data-key="email" contenteditable="true">Email: iliazh06@gmail.com</span> 
-                <span class="editable" data-key="phone" contenteditable="true">Телефон: +7 (913) 944-7914</span> 
-                <span class="editable" data-key="city" contenteditable="true">Город: Новосибирск</span>
-            </p>
+            <h1 class="editable" data-key="name">Жариков Илья</h1>
+            <p class="editable" data-key="contact">Email: iliazh06@gmail.com Телефон: +7 (913) 944-7914 Город: Новосибирск</p>
         </div>
-        
         <div class="section">
             <h2>Опыт работы</h2>
-            <div class="editable" data-key="experience1" contenteditable="true">
-                <strong>Game Developer</strong><br>
-                Январь 2020 - Настоящее время<br>
-                Разработка игровых механик на Unity, оптимизация производительности, создание прототипов.
-            </div>
-            <div class="editable" data-key="experience2" contenteditable="true">
-                <strong>Game Designer</strong><br>
-                Март 2018 - Декабрь 2019<br>
-                Создание концепций игр, проектирование уровней, балансировка геймплея.
-            </div>
+            <p class="editable" data-key="experience1"><strong>Frontend разработчик</strong><br>Январь 2020 - Настоящее время<br>Разработка пользовательских интерфейсов с использованием HTML, CSS, JavaScript. Оптимизация производительности веб-приложений.</p>
+            <p class="editable" data-key="experience2"><strong>Веб-дизайнер</strong><br>Март 2018 - Декабрь 2019<br>Создание макетов и прототипов для веб-сайтов.</p>
         </div>
-        
         <div class="section">
             <h2>Образование</h2>
-            <div class="editable" data-key="education" contenteditable="true">
-                Сибирский государственный университет телекоммуникаций и информатики<br>
-                2014 - 2018<br>
-                Направление: Программная инженерия
-            </div>
+            <p class="editable" data-key="education">Сибирский государственный университет телекоммуникаций и информатики<br>2014 - 2018<br>Направление: Программное обеспечение систем мобильной связи</p>
         </div>
-        
         <div class="section">
             <h2>Навыки</h2>
             <ul>
-                <li class="editable" data-key="skill1" contenteditable="true">Unity3D, C#</li>
-                <li class="editable" data-key="skill2" contenteditable="true">Unreal Engine, Blueprints</li>
-                <li class="editable" data-key="skill3" contenteditable="true">3D Modeling (Blender)</li>
-                <li class="editable" data-key="skill4" contenteditable="true">Game Physics</li>
-                <li class="editable" data-key="skill5" contenteditable="true">AI Programming</li>
+                <li class="editable" data-key="skill1">HTML5, CSS3, JavaScript</li>
+                <li class="editable" data-key="skill2">Адаптивный дизайн</li>
+                <li class="editable" data-key="skill3">Работа с Git</li>
+                <li class="editable" data-key="skill4">Основы UI/UX</li>
             </ul>
         </div>
-        
-        <div class="section">
-            <h2>Проекты</h2>
-            <div class="editable" data-key="project1" contenteditable="true">
-                <strong>Space Adventure (2022)</strong> - 3D платформер с элементами головоломки
-            </div>
-            <div class="editable" data-key="project2" contenteditable="true">
-                <strong>Cyber Racer (2021)</strong> - Аркадные гонки в стиле ретро-футуризм
-            </div>
-        </div>
-        
         <div class="buttons">
             <button class="download-btn" id="download-pdf">Скачать PDF</button>
             <button class="download-btn" id="save-changes">Сохранить изменения</button>
@@ -74,61 +41,6 @@
         <p>Генерация PDF...</p>
     </div>
 
-    <script>
-        // Включение редактирования при клике
-        document.querySelectorAll('.editable').forEach(el => {
-            el.addEventListener('click', function() {
-                this.setAttribute('contenteditable', 'true');
-                this.focus();
-            });
-            
-            el.addEventListener('blur', function() {
-                // Можно добавить сохранение в localStorage
-                // localStorage.setItem(this.dataset.key, this.textContent);
-            });
-        });
-
-        // Генерация PDF
-        document.getElementById('download-pdf').addEventListener('click', function() {
-            const loader = document.getElementById('loader');
-            loader.classList.add('active');
-            
-            // Временно отключаем contenteditable перед экспортом
-            document.querySelectorAll('[contenteditable="true"]').forEach(el => {
-                el.removeAttribute('contenteditable');
-            });
-            
-            const element = document.getElementById('resume');
-            const opt = {
-                margin: 10,
-                filename: 'GameDev_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2,
-                    useCORS: true,
-                    letterRendering: true,
-                    allowTaint: true
-                },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-            
-            setTimeout(() => {
-                html2pdf().from(element).set(opt).save().then(() => {
-                    loader.classList.remove('active');
-                    
-                    // Возвращаем contenteditable после экспорта
-                    document.querySelectorAll('.editable').forEach(el => {
-                        el.setAttribute('contenteditable', 'true');
-                    });
-                });
-            }, 500);
-        });
-
-        // Сохранение изменений
-        document.getElementById('save-changes').addEventListener('click', function() {
-            alert('Изменения сохранены (в реальном проекте будет отправка на сервер)');
-            // Реальная реализация будет зависеть от вашего backend
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
