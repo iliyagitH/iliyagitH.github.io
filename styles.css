@@ -229,3 +229,55 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+/* Добавляем в конец файла */
+
+/* Стили для редактирования */
+[contenteditable="true"] {
+    background: rgba(110, 68, 255, 0.2);
+    outline: 2px dashed #6e44ff;
+    border-radius: 4px;
+    padding: 2px 5px;
+}
+
+/* Фикс для PDF */
+@media print {
+    body {
+        background: none !important;
+        padding: 0 !important;
+    }
+    
+    .resume-container {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .header {
+        background: linear-gradient(135deg, #6e44ff 0%, #00b4d8 100%) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .section {
+        break-inside: avoid;
+    }
+    
+    .buttons {
+        display: none !important;
+    }
+}
+
+/* Явно указываем редактируемые элементы */
+.editable-field {
+    cursor: text;
+    border-bottom: 1px dashed rgba(255,255,255,0.5);
+    transition: all 0.2s;
+    padding: 2px 4px;
+    margin: -2px -4px;
+}
+
+.editable-field:hover {
+    background: rgba(0, 180, 216, 0.1);
+    border-bottom-color: #00b4d8;
+}
