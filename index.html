@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="resume-container" id="resume">
+        <div class="header">
+            <h1 class="editable" data-key="name">Жариков Илья</h1>
+            <p class="editable" data-key="contact">Email: iliazh06@gmail.com Телефон: +7 (913) 944-7914 Город: Новосибирск</p>
+        </div>
+        <div class="section">
+            <h2>Опыт работы</h2>
+            <p class="editable" data-key="experience1"><strong>Frontend разработчик</strong><br>Январь 2020 - Настоящее время<br>Разработка пользовательских интерфейсов с использованием HTML, CSS, JavaScript. Оптимизация производительности веб-приложений.</p>
+            <p class="editable" data-key="experience2"><strong>Веб-дизайнер</strong><br>Март 2018 - Декабрь 2019<br>Создание макетов и прототипов для веб-сайтов.</p>
+        </div>
+        <div class="section">
+            <h2>Образование</h2>
+            <p class="editable" data-key="education">Сибирский государственный университет телекоммуникаций и информатики<br>2014 - 2018<br>Направление: Программное обеспечение систем мобильной связи</p>
+        </div>
+        <div class="section">
+            <h2>Навыки</h2>
+            <ul>
+                <li class="editable" data-key="skill1">HTML5, CSS3, JavaScript</li>
+                <li class="editable" data-key="skill2">Адаптивный дизайн</li>
+                <li class="editable" data-key="skill3">Работа с Git</li>
+                <li class="editable" data-key="skill4">Основы UI/UX</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button class="download-btn" id="download-pdf">Скачать PDF</button>
+            <button class="download-btn" id="save-changes">Сохранить изменения</button>
+        </div>
+    </div>
+
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Генерация PDF...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
