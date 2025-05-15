@@ -3,75 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме - Луценко Илья | Разработчик игр</title>
+    <title>Резюме</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <style>
-        /* Скрываем кнопки при печати */
-        @media print {
-            .no-print {
-                display: none !important;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="resume-container" id="resume">
         <div class="header">
-            <h1><span class="editable-field" data-key="name">Луценко Илья</span></h1>
-            <p><span class="editable-field" data-key="position">Game Developer</span> | 
-               <span class="editable-field" data-key="specialization">Unity/Unreal Engine</span></p>
+            <h1 class="editable" data-key="name">Жариков Илья</h1>
+            <p class="editable" data-key="contact">Email: iliazh06@gmail.com Телефон: +7 (913) 944-7914 Город: Новосибирск</p>
         </div>
-        
-        <div class="content">
-            <div class="left-column">
-                <div class="section">
-                    <h2>Контакты</h2>
-                    <p>📧 <span class="editable-field" data-key="email">iliazh06@gmail.com</span></p>
-                    <p>📱 <span class="editable-field" data-key="phone">+7 (913) 944-7914</span></p>
-                    <p>📍 <span class="editable-field" data-key="location">Новосибирск</span></p>
-                </div>
-                
-                <div class="section">
-                    <h2>Навыки</h2>
-                    <div class="skills-container">
-                        <div class="skill-item">
-                            <span class="skill-badge editable-field" data-key="skill1">Unity</span>
-                            <span class="skill-badge editable-field" data-key="skill2">C#</span>
-                            <span class="skill-badge editable-field" data-key="skill3">3D Modeling</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="right-column">
-                <div class="section">
-                    <h2>Опыт работы</h2>
-                    <div class="game-project">
-                        <h3><span class="editable-field" data-key="job1-title">Lead Game Developer</span></h3>
-                        <p class="editable-field" data-key="job1-period">2021 - настоящее время</p>
-                        <p class="editable-field" data-key="job1-company">GameDev Studio</p>
-                        <ul>
-                            <li><span class="editable-field" data-key="job1-desc1">Разработка core-механик для мобильной RPG</span></li>
-                            <li><span class="editable-field" data-key="job1-desc2">Оптимизация производительности</span></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2>Образование</h2>
-                    <p><span class="editable-field" data-key="edu-degree">Бакалавр компьютерных наук</span></p>
-                    <p><span class="editable-field" data-key="edu-university">СибГУТИ</span>, 
-                       <span class="editable-field" data-key="edu-years">2014-2018</span></p>
-                </div>
-            </div>
+        <div class="section">
+            <h2>Опыт работы</h2>
+            <p class="editable" data-key="experience1"><strong>Frontend разработчик</strong><br>Январь 2020 - Настоящее время<br>Разработка пользовательских интерфейсов с использованием HTML, CSS, JavaScript. Оптимизация производительности веб-приложений.</p>
+            <p class="editable" data-key="experience2"><strong>Веб-дизайнер</strong><br>Март 2018 - Декабрь 2019<br>Создание макетов и прототипов для веб-сайтов.</p>
         </div>
-    </div>
-
-    <div class="buttons no-print">
-        <button class="download-btn" id="download-pdf">Скачать PDF</button>
-        <button class="download-btn" id="save-changes">Сохранить</button>
+        <div class="section">
+            <h2>Образование</h2>
+            <p class="editable" data-key="education">Сибирский государственный университет телекоммуникаций и информатики<br>2014 - 2018<br>Направление: Программное обеспечение систем мобильной связи</p>
+        </div>
+        <div class="section">
+            <h2>Навыки</h2>
+            <ul>
+                <li class="editable" data-key="skill1">HTML5, CSS3, JavaScript</li>
+                <li class="editable" data-key="skill2">Адаптивный дизайн</li>
+                <li class="editable" data-key="skill3">Работа с Git</li>
+                <li class="editable" data-key="skill4">Основы UI/UX</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button class="download-btn" id="download-pdf">Скачать PDF</button>
+            <button class="download-btn" id="save-changes">Сохранить изменения</button>
+        </div>
     </div>
 
     <div class="loader" id="loader">
@@ -79,80 +41,6 @@
         <p>Генерация PDF...</p>
     </div>
 
-    <script>
-        // Включение редактирования для всех полей
-        document.querySelectorAll('.editable-field').forEach(el => {
-            el.addEventListener('click', (e) => {
-                e.stopPropagation();
-                el.setAttribute('contenteditable', 'true');
-                el.focus();
-            });
-            
-            el.addEventListener('blur', () => {
-                el.removeAttribute('contenteditable');
-                // При желании можно добавить автосохранение:
-                // localStorage.setItem(el.dataset.key, el.textContent);
-            });
-        });
-
-        // Улучшенный экспорт в PDF
-        document.getElementById('download-pdf').addEventListener('click', () => {
-            const loader = document.getElementById('loader');
-            const element = document.getElementById('resume');
-            
-            loader.classList.add('active');
-            
-            // Временно скрываем кнопки перед экспортом
-            const buttons = document.querySelector('.buttons');
-            buttons.style.visibility = 'hidden';
-            
-            const opt = {
-                margin: 10,
-                filename: 'GameDev_Resume.pdf',
-                image: { type: 'jpeg', quality: 0.95 },
-                html2canvas: { 
-                    scale: 2,
-                    useCORS: true,
-                    letterRendering: true,
-                    allowTaint: true,
-                    logging: true
-                },
-                jsPDF: { 
-                    unit: 'mm', 
-                    format: 'a4', 
-                    orientation: 'portrait',
-                    hotfixes: ["px_scaling"] 
-                },
-                pagebreak: { mode: 'avoid-all' }
-            };
-            
-            setTimeout(() => {
-                html2pdf()
-                    .set(opt)
-                    .from(element)
-                    .save()
-                    .then(() => {
-                        loader.classList.remove('active');
-                        buttons.style.visibility = 'visible';
-                    });
-            }, 300);
-        });
-
-        // Сохранение данных (заглушка)
-        document.getElementById('save-changes').addEventListener('click', () => {
-            alert('Изменения сохранены в локальном хранилище');
-            document.querySelectorAll('.editable-field').forEach(el => {
-                localStorage.setItem(el.dataset.key, el.textContent);
-            });
-        });
-
-        // Загрузка сохраненных данных (при открытии страницы)
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.editable-field').forEach(el => {
-                const savedValue = localStorage.getItem(el.dataset.key);
-                if (savedValue) el.textContent = savedValue;
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
