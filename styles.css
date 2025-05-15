@@ -176,3 +176,56 @@ body {
         font-size: 2rem;
     }
 }
+.editable {
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border-bottom: 1px dashed rgba(255,255,255,0.3);
+}
+
+.editable:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-bottom: 1px dashed #00b4d8;
+}
+
+.editable[contenteditable="true"] {
+    background: rgba(0, 180, 216, 0.3);
+    outline: none;
+    border-bottom: 1px solid #00b4d8;
+}
+
+/* Стили для лоадера (остаются из оригинала) */
+.loader {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.loader.active {
+    display: flex;
+}
+
+.spinner {
+    border: 5px solid rgba(255,255,255,0.3);
+    border-top: 5px solid #00b4d8;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
